@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="브라우저에서 바로 즐기는 2인용 오목 게임" />
+  <title>오목 한판</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">FIVE IN A ROW</p>
+        <h1>오목 한판</h1>
+      </div>
+      <div class="actions">
+        <button id="undo" class="button secondary" type="button">무르기</button>
+        <button id="restart" class="button primary" type="button">새 게임</button>
+      </div>
+    </header>
+
+    <section class="game-layout">
+      <div class="board-panel">
+        <div id="board" class="board" role="grid" aria-label="15줄 오목판"></div>
+      </div>
+
+      <aside class="side-panel" aria-live="polite">
+        <section class="status-card">
+          <p class="label">현재 차례</p>
+          <div class="turn-row">
+            <span id="turn-stone" class="stone black" aria-hidden="true"></span>
+            <div>
+              <strong id="turn-label">흑돌</strong>
+              <p id="status-text">교차점을 눌러 첫 수를 두세요.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="score-card">
+          <div class="player active" id="black-player">
+            <span class="stone black" aria-hidden="true"></span>
+            <span>흑돌</span><b id="black-count">0수</b>
+          </div>
+          <div class="player" id="white-player">
+            <span class="stone white" aria-hidden="true"></span>
+            <span>백돌</span><b id="white-count">0수</b>
+          </div>
+        </section>
+
+        <section class="history-card">
+          <div class="section-heading">
+            <h2>착수 기록</h2><span id="move-total">0수</span>
+          </div>
+          <ol id="history" class="history-list"><li class="empty">아직 둔 수가 없습니다.</li></ol>
+        </section>
+
+        <p class="rule-note">가로·세로·대각선으로 돌 5개를 먼저 이으면 승리합니다.</p>
+      </aside>
+    </section>
+  </main>
+
+  <div id="result-modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="result-title">
+      <span id="winner-stone" class="stone black large" aria-hidden="true"></span>
+      <p class="eyebrow">GAME OVER</p>
+      <h2 id="result-title">흑돌 승리!</h2>
+      <p id="result-copy">멋진 오목입니다.</p>
+      <button id="play-again" class="button primary wide" type="button">한 판 더</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
